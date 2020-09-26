@@ -12,6 +12,9 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  history: {
+    type: 'hash',
+  },
   publicPath: './',
   dynamicImport: {
     loading: '@/components/PageLoading/index',
