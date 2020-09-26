@@ -1,6 +1,23 @@
 import request from '../../utils/request';
+const gateway = 'memberSetting';
+/**
+ * @memberof apis
+ * @description: 描述方法
+ * @function getonebysimple
+ * @param {type}  传入参数
+ * @author 许(后端对接人名称)
+ * @see {@link https://t.com/doc/MrD0qNADV}
+ * @return {object} 接口对象
+ */
 
-const gateway = 'user';
+export const getonebysimple = (data = {}) => {
+  return request.post({
+    url: 'getonebysimple',
+    data,
+    gateway,
+  });
+};
+
 /**
  * @memberof apis
  * @description: 描述方法
@@ -22,25 +39,7 @@ export const pagesimple = (data = {}) => {
 /**
  * @memberof apis
  * @description: 描述方法
- * @function page
- * @param {type}  传入参数
- * @author 许(后端对接人名称)
- * @see {@link https://t.com/doc/MrD0qNADV}
- * @return {object} 接口对象
- */
-
-export const page = (data = {}) => {
-  return request.post({
-    url: 'page',
-    data,
-    gateway,
-  });
-};
-
-/**
- * @memberof apis
- * @description: 描述方法
- * @function provinces
+ * @function editoradd
  * @param {type}  传入参数
  * @author 许(后端对接人名称)
  * @see {@link https://t.com/doc/MrD0qNADV}
@@ -58,34 +57,16 @@ export const editoradd = (data = {}) => {
 /**
  * @memberof apis
  * @description: 描述方法
- * @function login
+ * @function editoradd
  * @param {type}  传入参数
  * @author 许(后端对接人名称)
  * @see {@link https://t.com/doc/MrD0qNADV}
  * @return {object} 接口对象
  */
 
-export const login = (data = {}) => {
+export const getsomebysimple = (data = {}) => {
   return request.post({
-    url: 'loginAdmin',
-    data,
-    gateway,
-  });
-};
-
-/**
- * @memberof apis
- * @description: 描述方法
- * @function getonebysimple
- * @param {type}  传入参数
- * @author 许(后端对接人名称)
- * @see {@link https://t.com/doc/MrD0qNADV}
- * @return {object} 接口对象
- */
-
-export const getonebysimple = (data = {}) => {
-  return request.post({
-    url: 'getonebysimple',
+    url: 'getsomebysimple',
     data,
     gateway,
   });
@@ -111,17 +92,17 @@ export const remove = (data = {}) => {
 
 /**
  * @memberof apis
- * @description: 描述方法
- * @function check
+ * @description: 定制化分页带详情
+ * @function page
  * @param {type}  传入参数
  * @author 许(后端对接人名称)
  * @see {@link https://t.com/doc/MrD0qNADV}
  * @return {object} 接口对象
  */
 
-export const check = (data = {}) => {
+export const page = (data = {}) => {
   return request.post({
-    url: 'check',
+    url: 'page',
     data,
     gateway,
   });

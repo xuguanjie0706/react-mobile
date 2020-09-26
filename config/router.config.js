@@ -8,12 +8,20 @@ export default [
         component: '@/pages/Exchange',
       },
       {
+        path: 'list',
+        component: '@/pages/Exchange/list',
+      },
+      {
         path: 'detail',
         component: '@/pages/Exchange/detail',
       },
       {
         path: 'area',
         component: '@/pages/Exchange/areaForm',
+      },
+      {
+        path: 'home',
+        component: '@/pages/Home',
       },
       {
         path: '/',

@@ -12,6 +12,9 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  dynamicImport: {
+    loading: '@/components/PageLoading/index',
+  },
   routes,
   extraPostCSSPlugins: [
     postcssImport({}),

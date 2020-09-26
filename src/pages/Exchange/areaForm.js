@@ -47,6 +47,7 @@ const AreaForm = props => {
             Toast.hide();
             Toast.success('兑换成功', 3, null, true);
             setTimeout(() => {
+              const memberId = localStorage.getItem('memberId');
               history.push('/Exchange/' + memberId);
             }, 1000);
           }

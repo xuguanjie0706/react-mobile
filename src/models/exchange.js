@@ -4,7 +4,7 @@ const Model = {
   namespace: 'exchange',
   state: {
     data: {},
-    select: '',
+    select: {},
     status: false,
   },
   effects: {
@@ -40,7 +40,7 @@ const Model = {
     *exchange({ payload }, { select, call, put }) {
       const response = yield select(({ exchange }) => {
         return {
-          _usegoods: exchange.select,
+          _usegoods: exchange.select._id,
           _id: exchange.data._id,
           status: exchange.data.status,
         };
