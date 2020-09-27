@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Toast, Result } from 'antd-mobile';
 import api from '@/api';
 const Home = props => {
   console.log(props);
@@ -11,20 +12,36 @@ const Home = props => {
   // const dataStr = .split("?")[1]
   // dataStr[]
   console.log(query);
-  const [data, setData] = useState({});
-  useEffect(() => {
-    api.Weixin.getOpenidWeb({
+  const [isFinish, setIsFinish] = useState(false);
+  const initData = async () => {
+    // Toast.loading("")
+    const r = await api.Weixin.getOpenidWeb({
       code: obj.code,
       MemberId: obj.state.split('#')[0],
-    }).then(r => {
-      setData(r);
-      console.log(r);
     });
+    if (r) {
+      // Toast.hide();
+      setIsFinish(true);
+    }
+  };
+  useEffect(() => {
+    initData();
   }, []);
   return (
     <div className="room">
-      {JSON.stringify(data)}||
-      {window.location.href}
+      {isFinish ? (
+        <Result
+          // img={myImg('https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
+          title="绑定成功"
+        />
+      ) : (
+        <Result
+          // img={myImg('https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
+          title="绑定失败"
+        />
+      )}
+      {/* {JSON.stringify(data)}||
+      {window.location.href} */}
     </div>
   );
 };

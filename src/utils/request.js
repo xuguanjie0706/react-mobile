@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { notification, Modal, message } from 'antd';
+import { notification } from 'antd';
+import { Toast } from 'antd-mobile';
+
 import { history } from 'umi';
 import config from './config';
 
@@ -65,9 +67,13 @@ class $request {
     isNotice = true,
     isMock = false,
     gateway,
+    loading = false,
   }) {
     const headers = { token: localStorage.getItem('hl-token') };
     try {
+      if (loading) {
+        Toast.loading('', 10);
+      }
       const r = await instance.request({
         url: isMock ? 'mock/' + gateway + '/' + url : gateway + '/' + url,
         params,
@@ -79,20 +85,26 @@ class $request {
 
       const { data: resultData } = r;
       const { code, data: result, message } = resultData;
+      if (loading) {
+        Toast.hide();
+      }
       if (isNotice) {
         if (code === 0) {
           return result || true;
         }
-        if (code === -1) {
-          history.push('/login');
-        }
-        notification.error({ message: '请求失败', description: message });
+        // if (code === -1) {
+        //   history.push('/login');
+        // }
+        Toast.fail(message, 2, null, false);
         // message.error(msg);
       } else {
         return resultData;
       }
       return false;
     } catch (error) {
+      if (loading) {
+        Toast.hide();
+      }
       errorHandler(error);
       return false;
     }

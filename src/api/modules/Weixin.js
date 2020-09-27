@@ -15,5 +15,6 @@ export const getOpenidWeb = (data = {}) => {
     url: 'getOpenidWeb',
     data,
     gateway,
+    loading: true,
   });
 };
