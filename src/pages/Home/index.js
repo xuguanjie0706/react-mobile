@@ -12,7 +12,7 @@ const Home = props => {
   // const dataStr = .split("?")[1]
   // dataStr[]
   console.log(query);
-  const [isFinish, setIsFinish] = useState(false);
+  const [isFinish, setIsFinish] = useState(0);
   const initData = async () => {
     // Toast.loading("")
     const r = await api.Weixin.getOpenidWeb({
@@ -20,8 +20,9 @@ const Home = props => {
       MemberId: obj.state.split('#')[0],
     });
     if (r) {
-      // Toast.hide();
-      setIsFinish(true);
+      setIsFinish(1);
+    } else {
+      setIsFinish(2);
     }
   };
   useEffect(() => {
@@ -29,19 +30,18 @@ const Home = props => {
   }, []);
   return (
     <div className="room">
-      {isFinish ? (
+      {isFinish === 1 && (
         <Result
           // img={myImg('https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
           title="绑定成功"
         />
-      ) : (
+      )}
+      {isFinish === 2 && (
         <Result
           // img={myImg('https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
           title="绑定失败"
         />
       )}
-      {/* {JSON.stringify(data)}||
-      {window.location.href} */}
     </div>
   );
 };
