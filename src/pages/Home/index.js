@@ -15,7 +15,7 @@ const Home = props => {
   useEffect(() => {
     api.Weixin.getOpenidWeb({
       code: obj.code,
-      MemberId: obj.state,
+      MemberId: obj.state.split('#')[0],
     }).then(r => {
       setData(r);
       console.log(r);
