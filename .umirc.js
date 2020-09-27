@@ -12,6 +12,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  hash: true,
   history: {
     type: 'hash',
   },
