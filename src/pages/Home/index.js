@@ -6,7 +6,7 @@ const Home = props => {
     location: { query },
   } = props;
   console.log(query);
-  return <div></div>;
+  return <div>{JSON.stringify(query)}</div>;
 };
 
 export default Home;
