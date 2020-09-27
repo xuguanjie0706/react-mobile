@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { notification, Modal, message } from 'antd';
 import { history } from 'umi';
+import config from './config';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -44,7 +45,7 @@ const errorHandler = error => {
 };
 
 const instance = axios.create({
-  baseURL: 'http://localhost:7001',
+  baseURL: config.url,
   timeout: 5000,
 });
 // const defaultHeader = {
