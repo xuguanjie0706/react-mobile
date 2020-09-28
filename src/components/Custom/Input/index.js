@@ -2,9 +2,13 @@ import React from 'react';
 import './index.less';
 
 const Input = props => {
-  const { value, onChange, label = '标题', ...option } = props;
+  const { value, onChange, label = '标题', maxLength, ...option } = props;
   const handleChange = e => {
-    onChange(e.target.value);
+    let value = e.target.value;
+    if (value.length > maxLength) {
+      value = value.slice(0, maxLength);
+    }
+    onChange(value);
   };
   return (
     <div className="hl-input">

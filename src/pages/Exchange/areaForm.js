@@ -51,6 +51,19 @@ const AreaForm = props => {
               history.push('/Exchange/' + memberId);
             }, 1000);
           }
+        } else {
+          // console.log(err);
+
+          // const errObj = form.getFieldsError();
+          // console.log(errObj);
+          // const msg = errObj[Object.keys(errObj)[0]];
+          // console.log(msg);
+          Toast.fail(
+            err[Object.keys(err)[0]].errors[0].message,
+            1,
+            null,
+            false,
+          );
         }
       });
     } catch (error) {
@@ -89,6 +102,7 @@ const AreaForm = props => {
                 },
               ],
             })}
+            maxLength={11}
             label="手机号"
           />
         </Item>

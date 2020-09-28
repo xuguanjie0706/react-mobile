@@ -16,7 +16,7 @@ const myImg = src => (
 );
 const detail = props => {
   console.log(props);
-  const { history, dispatch, exchange } = props;
+  const { history, dispatch, exchange, setting } = props;
   const { _goods: goodsList = [], sendInfo } = exchange;
   const [selected, setSelected] = useState('');
   const handleRadio = (value, e) => {
@@ -74,7 +74,7 @@ const detail = props => {
           <Result
             // img={myImg('https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
             title="卡号已兑换,请等待发货"
-            message={<div>如有疑问请拨打 18079442444 </div>}
+            message={<div>如有疑问请拨打 {setting.phone || 18079442444} </div>}
           />
         </div>
       )}
@@ -84,10 +84,10 @@ const detail = props => {
             // img={myImg('https://gw.alipayobjects.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
             title="已发货"
             message={
-              <div>
-                <p>快递单号</p>
+              <div className="pre">
+                {/* <p>快递单号</p> */}
                 {sendInfo.map(item => (
-                  <div>{`${item.sendName}单号:${item.sendNumber} 备注：${item.remarks}`}</div>
+                  <div>{`${item.sendName}单号:${item.sendNumber} \n 备注：${item.remarks}`}</div>
                 ))}
               </div>
             }
@@ -98,4 +98,7 @@ const detail = props => {
   );
 };
 
-export default connect(({ exchange }) => ({ exchange: exchange.data }))(detail);
+export default connect(({ exchange, setting }) => ({
+  exchange: exchange.data,
+  setting: setting.data,
+}))(detail);

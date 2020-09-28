@@ -58,11 +58,12 @@ const Exchange = props => {
 
   const handleClick = () => {
     form.validateFields(async (err, values) => {
-      const _data = {
-        ...values,
-        _member: memberId,
-      };
       if (!err) {
+        const _data = {
+          password: values.password.replace(/(^\s*)|(\s*$)/g, ''),
+          card: values.card.replace(/(^\s*)|(\s*$)/g, ''),
+          _member: memberId,
+        };
         setLoading(true);
         const r = await dispatch({
           type: 'exchange/getone',
@@ -113,7 +114,7 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      initialValue: 'xx10100462582787',
+                      // initialValue: 'xx10100462582787',
                     })}
                     label="卡号"
                   />
@@ -125,7 +126,7 @@ const Exchange = props => {
                           message: '密码不能为空',
                         },
                       ],
-                      initialValue: '3D5zv%PI',
+                      // initialValue: '3D5zv%PI',
                     })}
                     autocomplete="new-password"
                     label="密码"
