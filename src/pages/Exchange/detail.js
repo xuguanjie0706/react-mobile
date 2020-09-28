@@ -3,8 +3,6 @@ import { List, Button, WingBlank } from 'antd-mobile';
 import FixedView from './components/FixedView';
 import config from '@/utils/config';
 import { connect } from 'umi';
-import LazyLoad from 'react-lazyload';
-import img from '@/assets/bg.png';
 
 function lazyload(e, els = []) {
   var seeHeight = e.clientHeight;
