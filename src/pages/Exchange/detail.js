@@ -3,16 +3,38 @@ import { List, Button, WingBlank } from 'antd-mobile';
 import FixedView from './components/FixedView';
 import config from '@/utils/config';
 import { connect } from 'umi';
+import LazyLoad from 'react-lazyload';
+import img from '@/assets/bg.png';
+
+function lazyload(e, els = []) {
+  var seeHeight = e.clientHeight;
+  var scrollTop = e.scrollTop;
+  els.forEach(item => {
+    if (item.src === '') {
+      if (item.offsetTop < seeHeight + scrollTop) {
+        item.src = item.getAttribute('data-src');
+      }
+    }
+  });
+}
 
 const detail = props => {
   const { history, dispatch, selectInfo = {}, status } = props;
   const { imgs = [] } = selectInfo;
-  console.log(selectInfo);
+  // console.log(selectInfo);
   useEffect(() => {
     if (!status) {
       const memberId = localStorage.getItem('memberId');
       history.push('/Exchange/' + memberId);
     }
+    const els = document.querySelectorAll('.lazy');
+    const elRoom = document.querySelector('.hl-scroll');
+    elRoom.addEventListener('scroll', e => lazyload(e.target, els), false);
+
+    // document.querySelector(".hl-scroll").onscroll = function (e) {
+    //   console.log(e);
+    // }
+    lazyload(elRoom, els);
   }, []);
 
   const handleClick = () => {
@@ -22,7 +44,13 @@ const detail = props => {
     <div className="room">
       <div className="hl-scroll">
         {imgs.map(item => (
-          <img className="pic" key={item} src={config.url + item} alt="" />
+          <img
+            className="pic lazy"
+            data-src={config.url + item}
+            key={item}
+            // src={config.url + item}
+            alt=""
+          />
         ))}
         <FixedView>
           <WingBlank>

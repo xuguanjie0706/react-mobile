@@ -15,14 +15,9 @@ const myImg = src => (
   <img src={src} className="spe am-icon am-icon-md" alt="" />
 );
 const detail = props => {
-  console.log(props);
+  // console.log(props);
   const { history, dispatch, exchange, setting } = props;
   const { _goods: goodsList = [], sendInfo } = exchange;
-  const [selected, setSelected] = useState('');
-  const handleRadio = (value, e) => {
-    console.log(e);
-    setSelected(value);
-  };
 
   useEffect(() => {
     if (!exchange.status) {
@@ -51,7 +46,7 @@ const detail = props => {
         <div className="hl-scroll">
           <List>
             {goodsList.map(i => (
-              <Item onClick={() => handleClick(i)}>
+              <Item onClick={() => handleClick(i)} key={i._id}>
                 <div className="list-item" style={{ display: 'flex' }}>
                   <img
                     onClick={handleImgClick}
