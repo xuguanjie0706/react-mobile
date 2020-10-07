@@ -114,7 +114,7 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      initialValue: 'xio10100464051487',
+                      // initialValue: 'xio10100464051487',
                     })}
                     label="卡号"
                   />
@@ -126,7 +126,7 @@ const Exchange = props => {
                           message: '密码不能为空',
                         },
                       ],
-                      initialValue: 'b&7RVwm$',
+                      // initialValue: 'b&7RVwm$',
                     })}
                     autocomplete="new-password"
                     label="密码"
