@@ -26,7 +26,7 @@ export default defineConfig({
     postcssUrl({}),
     postcssAspectRatioMini({}),
     postcssWriteSvg({ utf8: false }),
-    postcsscssnext({}),
+    // postcsscssnext({}),
     pxToViewPort({
       viewportWidth: 375, // (Number) The width of the viewport.
       viewportHeight: 667, // (Number) The height of the viewport.

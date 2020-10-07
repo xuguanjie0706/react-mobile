@@ -20,6 +20,10 @@ export default [
         component: '@/pages/Exchange/areaForm',
       },
       {
+        path: 'image',
+        component: '@/pages/Exchange/image',
+      },
+      {
         path: 'home',
         component: '@/pages/Home',
       },

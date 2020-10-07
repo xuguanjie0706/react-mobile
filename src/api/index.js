@@ -1,7 +1,7 @@
 /*
  * @Author: xgj
  * @since: 2020-06-08 13:52:17
- * @lastTime: 2020-09-27 13:15:56
+ * @lastTime: 2020-09-30 09:23:47
  * @LastAuthor: xgj
  * @FilePath: /web/src/api/index.js
  * @message:
@@ -22,6 +22,7 @@ import * as Goods from './modules/Goods';
 import * as ExchangeCard from './modules/ExchangeCard';
 import * as MemberSetting from './modules/MemberSetting';
 import * as Weixin from './modules/Weixin';
+import * as Pic from './modules/Pic';
 
 export default {
   File,
@@ -34,4 +35,5 @@ export default {
   ExchangeCard,
   MemberSetting,
   Weixin,
+  Pic,
 };

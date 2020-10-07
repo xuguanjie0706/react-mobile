@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { List, Radio, Button, WingBlank, Result } from 'antd-mobile';
+import { List, Radio, Modal, Toast, Result, InputItem } from 'antd-mobile';
 import './index.less';
 import FixedView from './components/FixedView';
 import { connect } from 'umi';
 import config from '@/utils/config';
+import api from '@/api';
 
 const data2 = [
   { value: 0, label: 'basketball', extra: 'details' },
@@ -19,12 +20,33 @@ const detail = props => {
   const { history, dispatch, exchange, setting } = props;
   const { _goods: goodsList = [], sendInfo } = exchange;
 
+  const [isShow, setIsShow] = useState(false);
+  const [url, setUrl] = useState('');
+
   useEffect(() => {
     if (!exchange.status) {
       const memberId = localStorage.getItem('memberId');
       history.push('/Exchange/' + memberId);
     }
   }, []);
+
+  const handleClickImg = async item => {
+    console.log(item);
+    Toast.loading(null, 10);
+    try {
+      const r = await api.Pic.getpic({ code: item.sendNumber });
+      // console.log(r);
+      setUrl(r);
+      setIsShow(true);
+      // history.push("/image")
+      if (r) {
+        Toast.hide();
+        // window.location.href = r
+      }
+    } catch (error) {
+      Toast.hide();
+    }
+  };
 
   const handleClick = i => {
     dispatch({
@@ -82,13 +104,27 @@ const detail = props => {
               <div className="pre">
                 {/* <p>快递单号</p> */}
                 {sendInfo.map(item => (
-                  <div>{`${item.sendName}单号:${item.sendNumber} \n 备注：${item.remarks}`}</div>
+                  <div key={item.sendNumber}>
+                    {`${item.sendName}单号:${item.sendNumber} \n 备注：${item.remarks} `}{' '}
+                    <span onClick={() => handleClickImg(item)}>点击查看</span>
+                  </div>
                 ))}
               </div>
             }
           />
         </div>
       )}
+      {/* <InputItem /> */}
+      <Modal
+        popup
+        visible={isShow}
+        onClose={() => setIsShow(false)}
+        animationType="slide-up"
+      >
+        <div className="send-pic-room">
+          <img onClick={() => setIsShow(false)} src={url} alt="" />
+        </div>
+      </Modal>
     </div>
   );
 };

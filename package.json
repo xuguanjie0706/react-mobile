@@ -22,6 +22,7 @@
   "dependencies": {
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.3",
+    "antd-mobile": "^2.3.4",
     "axios": "^0.20.0",
     "cssnano": "^4.1.10",
     "lint-staged": "^10.0.7",
