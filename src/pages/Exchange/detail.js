@@ -53,7 +53,7 @@ const detail = props => {
         <FixedView>
           <WingBlank>
             <Button onClick={handleClick} type="primary">
-              确定
+              确认兑换
             </Button>
           </WingBlank>
         </FixedView>

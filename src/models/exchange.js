@@ -22,7 +22,7 @@ const Model = {
           key: 'status',
         });
 
-        return true;
+        return response;
       } else {
         return false;
       }

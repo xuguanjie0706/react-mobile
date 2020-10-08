@@ -73,7 +73,15 @@ const Exchange = props => {
         console.log(r);
         if (r) {
           setExchangeData(r);
-          history.push('/list');
+          if (r._goods.length) {
+            dispatch({
+              type: 'exchange/selectOne',
+              payload: r._goods[0],
+            });
+            history.push('/detail');
+          } else {
+            history.push('/list');
+          }
         } else {
           Toast.fail('卡号或者密码不正确', 1, null, false);
         }
@@ -114,7 +122,7 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      // initialValue: 'xio1010046405142272',
+                      initialValue: 'xio1010046405142272',
                     })}
                     label="卡号"
                   />
@@ -126,7 +134,7 @@ const Exchange = props => {
                           message: '密码不能为空',
                         },
                       ],
-                      // initialValue: 'b&7RVwm$',
+                      initialValue: 'b&7RVwm$',
                     })}
                     autocomplete="new-password"
                     label="密码"
@@ -136,7 +144,7 @@ const Exchange = props => {
                 <WhiteSpace></WhiteSpace>
                 <WhiteSpace></WhiteSpace>
                 <Button loading={loading} onClick={handleClick} type="primary">
-                  确定
+                  兑换
                 </Button>
               </div>
             </WingBlank>
