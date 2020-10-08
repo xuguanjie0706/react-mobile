@@ -28,6 +28,14 @@ const detail = props => {
       const memberId = localStorage.getItem('memberId');
       history.push('/Exchange/' + memberId);
     }
+    console.log(goodsList);
+    if (goodsList.length === 1) {
+      dispatch({
+        type: 'exchange/selectOne',
+        payload: goodsList[0],
+      });
+      history.push('/detail');
+    }
   }, []);
 
   const handleClickImg = async item => {

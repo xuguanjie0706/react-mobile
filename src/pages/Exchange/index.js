@@ -114,7 +114,7 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      // initialValue: 'xio10100464051487',
+                      // initialValue: 'xio1010046405142272',
                     })}
                     label="卡号"
                   />
@@ -132,6 +132,8 @@ const Exchange = props => {
                     label="密码"
                   />
                 </Input.Group>
+                <WhiteSpace></WhiteSpace>
+                <WhiteSpace></WhiteSpace>
                 <WhiteSpace></WhiteSpace>
                 <Button loading={loading} onClick={handleClick} type="primary">
                   确定
