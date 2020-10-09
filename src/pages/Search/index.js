@@ -119,34 +119,17 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      initialValue: '10100502598630',
+                      // initialValue: '10100502598630',
                     })}
-                    // label="卡号"
                   >
-                    <span>卡号</span>
-                  </InputItem>
-                  <InputItem
-                    {...getFieldProps('password', {
-                      rules: [
-                        {
-                          required: true,
-                          message: '密码不能为空',
-                        },
-                      ],
-                      initialValue: 'zLW0bvic',
-                    })}
-                    clear
-                    // type="password"
-                    autocomplete="new-password"
-                  >
-                    密码
+                    <span>手机号</span>
                   </InputItem>
                 </div>
                 <WhiteSpace></WhiteSpace>
                 <WhiteSpace></WhiteSpace>
                 <WhiteSpace></WhiteSpace>
                 <Button loading={loading} onClick={handleClick} type="primary">
-                  兑换
+                  查询
                 </Button>
               </div>
             </WingBlank>

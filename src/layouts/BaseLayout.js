@@ -2,16 +2,29 @@ import React, { useState } from 'react';
 import { TabBar } from 'antd-mobile';
 
 const BaseLayout = props => {
-  console.log(123);
-  const { children } = props;
+  console.log(props);
+  const { children, history } = props;
   const tabBars = [
     {
-      name: 'blueTab',
-      title: 'Life',
-      icon: '',
+      name: 'home',
+      title: '首页',
+      icon: 'icon-shouye',
+      url: '/Exchange/',
+    },
+    {
+      name: 'search',
+      title: '查询',
+      icon: 'icon-chaxun',
+      url: '/Search/',
     },
   ];
-  const [selectedTab, setSelectedTab] = useState('blueTab');
+  const [selectedTab, setSelectedTab] = useState('home');
+
+  const handleClick = item => {
+    const memberId = localStorage.getItem('memberId');
+    setSelectedTab(item.name);
+    history.push(item.url + memberId);
+  };
 
   return (
     <div className="room">
@@ -20,41 +33,49 @@ const BaseLayout = props => {
         tintColor="#33A3F4"
         barTintColor="white"
         tabBarPosition="bottom"
-        // hidden={this.state.hidden}
       >
-        <TabBar.Item
+        {tabBars.map(item => (
+          <TabBar.Item
+            key={item.title}
+            title={item.title}
+            selected={selectedTab === item.name}
+            onPress={() => handleClick(item)}
+            icon={
+              <span
+                style={{
+                  fontSize: 22,
+                  lineHeight: 1,
+                }}
+                className={`iconfont ${item.icon}`}
+              ></span>
+            }
+            selectedIcon={
+              <span
+                style={{
+                  fontSize: 22,
+                  lineHeight: 1,
+                  color: '#33A3F4',
+                }}
+                className={`iconfont ${item.icon}`}
+              ></span>
+            }
+            // data-seed="logId"
+          >
+            {children}
+            {/* {this.renderContent('Life')} */}
+          </TabBar.Item>
+        ))}
+        {/* <TabBar.Item
           title="首页"
-          key="Life"
-          icon={
-            <div
-              style={{
-                width: '22px',
-                height: '22px',
-                background:
-                  'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat',
-              }}
-            />
-          }
-          selectedIcon={
-            <div
-              style={{
-                width: '22px',
-                height: '22px',
-                background:
-                  'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat',
-              }}
-            />
-          }
           selected={selectedTab === 'blueTab'}
           onPress={() => {
             setSelectedTab('blueTab');
           }}
           data-seed="logId"
         >
-          1232
-          {/* {this.renderContent('Life')} */}
-        </TabBar.Item>
-        <TabBar.Item
+          {children}
+        </TabBar.Item> */}
+        {/* <TabBar.Item
           title="首页"
           key="Life"
           icon={
@@ -85,8 +106,7 @@ const BaseLayout = props => {
           data-seed="logId"
         >
           188
-          {/* {this.renderContent('Life')} */}
-        </TabBar.Item>
+        </TabBar.Item> */}
       </TabBar>
     </div>
   );

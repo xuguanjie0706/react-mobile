@@ -3,10 +3,10 @@ export default [
     path: '/',
     component: '@/layouts',
     routes: [
-      {
-        path: 'Exchange/:memberId',
-        component: '@/pages/Exchange',
-      },
+      // {
+      //   path: 'Exchange/:memberId',
+      //   component: '@/pages/Exchange',
+      // },
       {
         path: 'list',
         component: '@/pages/Exchange/list',
@@ -31,9 +31,17 @@ export default [
         path: '/',
         component: '@/layouts/BaseLayout',
         routes: [
+          // {
+          //   path: '/',
+          //   component: '@/pages/index',
+          // },
           {
-            path: '/',
-            component: '@/pages/index',
+            path: 'Exchange/:memberId',
+            component: '@/pages/Exchange',
+          },
+          {
+            path: 'Search/:memberId',
+            component: '@/pages/Search',
           },
         ],
       },
