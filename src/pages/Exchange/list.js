@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { List, Radio, Modal, Toast, Result, InputItem } from 'antd-mobile';
+import {
+  List,
+  Radio,
+  Modal,
+  Toast,
+  Result,
+  InputItem,
+  Button,
+} from 'antd-mobile';
 import './index.less';
 import FixedView from './components/FixedView';
 import { connect } from 'umi';
@@ -75,23 +83,29 @@ const detail = props => {
     <div className="room">
       {exchange.status === '1' && (
         <div className="hl-scroll">
-          <List>
-            {goodsList.map(i => (
-              <Item onClick={() => handleClick(i)} key={i._id}>
-                <div className="list-item" style={{ display: 'flex' }}>
-                  <img
-                    onClick={handleImgClick}
-                    className="pic"
-                    src={config.url + i.img}
-                  />
-                  <div>
-                    <p className="title">{i.name}</p>
-                    <p className="desc">{i.value}</p>
-                  </div>
-                </div>
-              </Item>
-            ))}
-          </List>
+          {/* <List> */}
+          {goodsList.map(i => (
+            // <Item >
+            <div
+              onClick={() => handleClick(i)}
+              key={i._id}
+              className="list-item"
+              style={{ display: 'flex' }}
+            >
+              <img
+                onClick={handleImgClick}
+                className="pic"
+                src={config.url + i.img}
+              />
+              <div className="title-room">
+                <p className="title">{i.name}</p>
+                <p className="desc">{i.value}</p>
+                {/* <Button type="primary" inline size="small" style={{ marginLeft: '4px', marginTop: 8 }}>选择</Button> */}
+              </div>
+            </div>
+            // </Item>
+          ))}
+          {/* </List> */}
         </div>
       )}
 

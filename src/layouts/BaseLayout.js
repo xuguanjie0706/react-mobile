@@ -71,54 +71,10 @@ const BaseLayout = props => {
                 className={`iconfont ${item.icon}`}
               ></span>
             }
-            // data-seed="logId"
           >
             {children}
-            {/* {this.renderContent('Life')} */}
           </TabBar.Item>
         ))}
-        {/* <TabBar.Item
-          title="首页"
-          selected={selectedTab === 'blueTab'}
-          onPress={() => {
-            setSelectedTab('blueTab');
-          }}
-          data-seed="logId"
-        >
-          {children}
-        </TabBar.Item> */}
-        {/* <TabBar.Item
-          title="首页"
-          key="Life"
-          icon={
-            <div
-              style={{
-                width: '22px',
-                height: '22px',
-                background:
-                  'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat',
-              }}
-            />
-          }
-          selectedIcon={
-            <div
-              style={{
-                width: '22px',
-                height: '22px',
-                background:
-                  'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat',
-              }}
-            />
-          }
-          selected={selectedTab === 'redTab'}
-          badge={1}
-          onPress={() => {
-            setSelectedTab('redTab');
-          }}
-          data-seed="logId"
-        >
-          188
-        </TabBar.Item> */}
       </TabBar>
     </div>
   );

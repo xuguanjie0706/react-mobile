@@ -73,7 +73,7 @@ const Exchange = props => {
         console.log(r);
         if (r) {
           setExchangeData(r);
-          if (r._goods.length) {
+          if (r._goods.length === 1) {
             dispatch({
               type: 'exchange/selectOne',
               payload: r._goods[0],
@@ -119,7 +119,7 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      initialValue: '10100502598630',
+                      initialValue: 'xx10100505075500',
                     })}
                     // label="卡号"
                   >
@@ -133,7 +133,7 @@ const Exchange = props => {
                           message: '密码不能为空',
                         },
                       ],
-                      initialValue: 'zLW0bvic',
+                      initialValue: 'wy5yjPmi',
                     })}
                     clear
                     // type="password"
