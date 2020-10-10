@@ -18,6 +18,8 @@ const AreaForm = props => {
       const memberId = localStorage.getItem('memberId');
       history.push('/Exchange/' + memberId);
     }
+
+    document.title = '输入地址';
   }, []);
 
   const handleClick = () => {

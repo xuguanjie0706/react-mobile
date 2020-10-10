@@ -60,30 +60,21 @@ const Exchange = props => {
     form.validateFields(async (err, values) => {
       if (!err) {
         const _data = {
-          password: values.password.replace(/(^\s*)|(\s*$)/g, ''),
-          card: values.card.replace(/(^\s*)|(\s*$)/g, ''),
+          mobile: values.mobile.replace(/(^\s*)|(\s*$)/g, ''),
           _member: memberId,
         };
         setLoading(true);
         const r = await dispatch({
-          type: 'exchange/getone',
+          type: 'exchange/getonebymobile',
           payload: _data,
         });
-        setLoading(false);
         console.log(r);
-        if (r) {
-          setExchangeData(r);
-          if (r._goods.length) {
-            dispatch({
-              type: 'exchange/selectOne',
-              payload: r._goods[0],
-            });
-            history.push('/detail');
-          } else {
-            history.push('/list');
-          }
+        setLoading(false);
+        if (r && r.length === 0) {
+          Toast.fail('没有快递单信息', 1, null, false);
         } else {
-          Toast.fail('卡号或者密码不正确', 1, null, false);
+          history.push('/Search/detail');
+          // Toast.fail('没有快递单信息', 1, null, false);
         }
       } else {
         const errObj = form.getFieldsError();
@@ -112,14 +103,15 @@ const Exchange = props => {
                 <div className="input-room">
                   <InputItem
                     clear
-                    {...getFieldProps('card', {
+                    maxLength={11}
+                    {...getFieldProps('mobile', {
                       rules: [
                         {
                           required: true,
-                          message: '卡号不能为空',
+                          message: '电话不能为空',
                         },
                       ],
-                      // initialValue: '10100502598630',
+                      initialValue: '18079442433',
                     })}
                   >
                     <span>手机号</span>

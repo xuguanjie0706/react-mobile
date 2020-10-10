@@ -28,6 +28,10 @@ export default [
         component: '@/pages/Home',
       },
       {
+        path: 'Search/detail',
+        component: '@/pages/Search/detail',
+      },
+      {
         path: '/',
         component: '@/layouts/BaseLayout',
         routes: [

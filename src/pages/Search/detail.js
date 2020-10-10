@@ -1,68 +1,75 @@
 import React, { useEffect } from 'react';
-import { List, Button, WingBlank } from 'antd-mobile';
-import FixedView from './components/FixedView';
-import config from '@/utils/config';
 import { connect } from 'umi';
+import { Result, List } from 'antd-mobile';
+import './index.less';
+const Item = List.Item;
+const Brief = Item.Brief;
+const StatusEnum = {
+  2: '已兑换',
+  3: '待发货',
+  4: '已发货',
+};
+const Detail = props => {
+  console.log(props);
+  const { setting, list, history } = props;
 
-function lazyload(e, els = []) {
-  var seeHeight = e.clientHeight;
-  var scrollTop = e.scrollTop;
-  els.forEach(item => {
-    if (item.src === '') {
-      if (item.offsetTop < seeHeight + scrollTop) {
-        item.src = item.getAttribute('data-src');
-      }
-    }
-  });
-}
-
-const detail = props => {
-  const { history, dispatch, selectInfo = {}, status } = props;
-  const { imgs = [] } = selectInfo;
-  // console.log(selectInfo);
   useEffect(() => {
-    if (!status) {
-      const memberId = localStorage.getItem('memberId');
-      history.push('/Exchange/' + memberId);
+    if (list.length === 0) {
+      history.go(-1);
     }
-    const els = document.querySelectorAll('.lazy');
-    const elRoom = document.querySelector('.hl-scroll');
-    elRoom.addEventListener('scroll', e => lazyload(e.target, els), false);
-
-    // document.querySelector(".hl-scroll").onscroll = function (e) {
-    //   console.log(e);
-    // }
-    lazyload(elRoom, els);
   }, []);
-
-  const handleClick = () => {
-    history.push('/area');
-  };
   return (
-    <div className="room">
-      <div className="hl-scroll">
-        {imgs.map(item => (
-          <img
-            className="pic lazy"
-            data-src={config.url + item}
-            key={item}
-            // src={config.url + item}
-            alt=""
-          />
-        ))}
-        <FixedView>
-          <WingBlank>
-            <Button onClick={handleClick} type="primary">
-              确认兑换
-            </Button>
-          </WingBlank>
-        </FixedView>
+    <div className="search-detail">
+      <Result
+        // img={myImg('https://gw.alipayobjectss.com/zos/rmsportal/pdFARIqkrKEGVVEwotFe.svg')}
+        title="查询成功"
+        message={<div>如有疑问请拨打 {setting.phone || ''} </div>}
+      />
+      <div className="hl-margin-10">
+        <List renderHeader={() => '订单信息'}>
+          {list.map(item => (
+            <List.Item
+              key={item.card}
+              align="top"
+              extra={StatusEnum[item.status]}
+              wrap
+              multipleLine
+            >
+              卡号:{item.card}
+              <Brief>
+                <div className="my-brief">
+                  {item.address &&
+                    '收件人:' +
+                      item.address.people +
+                      ' 手机号:' +
+                      item.address.mobile +
+                      '\n收货地址:' +
+                      item.address.area.join('').toString() +
+                      item.address.mainArea +
+                      '\n'}
+                  {item.sendInfo &&
+                    item.sendInfo.map(it => (
+                      <div>
+                        {it.sendName +
+                          ':' +
+                          it.sendNumber +
+                          '\n' +
+                          '备注:' +
+                          it.remarks +
+                          '\n'}
+                      </div>
+                    ))}
+                </div>
+              </Brief>
+            </List.Item>
+          ))}
+        </List>
       </div>
     </div>
   );
 };
 
-export default connect(({ exchange }) => ({
-  selectInfo: exchange.select,
-  status: exchange.status,
-}))(detail);
+export default connect(({ exchange, setting }) => ({
+  list: exchange.list,
+  setting: setting.data,
+}))(Detail);

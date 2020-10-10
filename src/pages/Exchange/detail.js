@@ -33,6 +33,7 @@ const detail = props => {
     //   console.log(e);
     // }
     lazyload(elRoom, els);
+    document.title = '商品详情';
   }, []);
 
   const handleClick = () => {

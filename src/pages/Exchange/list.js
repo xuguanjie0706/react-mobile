@@ -28,6 +28,7 @@ const detail = props => {
       const memberId = localStorage.getItem('memberId');
       history.push('/Exchange/' + memberId);
     }
+    document.title = '商品列表';
     // console.log(goodsList);
     // if (goodsList.length === 1) {
     //   dispatch({
@@ -67,7 +68,7 @@ const detail = props => {
   const handleImgClick = e => {
     // e.stop
     e.stopPropagation();
-    console.log(123);
+    // console.log(123);
   };
 
   return (

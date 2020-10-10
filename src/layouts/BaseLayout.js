@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TabBar } from 'antd-mobile';
 
 const BaseLayout = props => {
   console.log(props);
-  const { children, history } = props;
+  const {
+    children,
+    history,
+    location: { pathname },
+  } = props;
   const tabBars = [
     {
-      name: 'home',
+      name: 'exchange',
       title: '首页',
       icon: 'icon-shouye',
       url: '/Exchange/',
@@ -18,13 +22,21 @@ const BaseLayout = props => {
       url: '/Search/',
     },
   ];
-  const [selectedTab, setSelectedTab] = useState('home');
+  const [selectedTab, setSelectedTab] = useState('exchange');
 
   const handleClick = item => {
     const memberId = localStorage.getItem('memberId');
     setSelectedTab(item.name);
     history.push(item.url + memberId);
   };
+
+  useEffect(() => {
+    const tab = tabBars.find(item => {
+      let index = pathname.indexOf(item.url);
+      return index !== -1;
+    });
+    setSelectedTab(tab.name);
+  }, []);
 
   return (
     <div className="room">
