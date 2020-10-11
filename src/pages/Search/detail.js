@@ -32,7 +32,11 @@ const Detail = props => {
             <List.Item
               key={item.card}
               align="top"
-              extra={StatusEnum[item.status]}
+              extra={
+                <span style={{ color: 'rgb(252, 101, 49)' }}>
+                  {StatusEnum[item.status]}
+                </span>
+              }
               wrap
               multipleLine
             >
@@ -55,9 +59,11 @@ const Detail = props => {
                   {item.sendInfo &&
                     item.sendInfo.map(it => (
                       <div>
-                        {it.sendName + ':' + it.sendNumber + '\n' + it.remarks
-                          ? '备注:' + it.remarks
-                          : '' + '\n'}
+                        {it.sendName +
+                          ':' +
+                          it.sendNumber +
+                          (it.remarks ? '\n' + '备注:' + it.remarks : '') +
+                          '\n'}
                       </div>
                     ))}
                 </div>
