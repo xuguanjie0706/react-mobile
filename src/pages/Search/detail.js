@@ -34,7 +34,12 @@ const Detail = props => {
               align="top"
               extra={
                 <span style={{ color: 'rgb(252, 101, 49)' }}>
-                  {StatusEnum[item.status]}
+                  {+item.status === 4 &&
+                  moment(item.exchangeTime)
+                    .add(1, 'month')
+                    .valueOf() < moment().valueOf()
+                    ? '已完成'
+                    : StatusEnum[item.status]}
                 </span>
               }
               wrap
