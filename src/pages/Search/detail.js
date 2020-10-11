@@ -50,13 +50,9 @@ const Detail = props => {
                   {item.sendInfo &&
                     item.sendInfo.map(it => (
                       <div>
-                        {it.sendName +
-                          ':' +
-                          it.sendNumber +
-                          '\n' +
-                          '备注:' +
-                          it.remarks +
-                          '\n'}
+                        {it.sendName + ':' + it.sendNumber + '\n' + it.remarks
+                          ? '备注:' + it.remarks
+                          : '' + '\n'}
                       </div>
                     ))}
                 </div>
