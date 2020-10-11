@@ -36,7 +36,7 @@ const BaseLayout = props => {
       return index !== -1;
     });
     setSelectedTab(tab.name);
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="room">
