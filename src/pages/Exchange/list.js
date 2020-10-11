@@ -113,7 +113,12 @@ const detail = props => {
               </div>
               <div className="address">以下地区不发货:澳门、台湾、香港</div>
               <div className="button-room">
-                <Button type="primary" size="small" inline={true}>
+                <Button
+                  style={{ width: 100 }}
+                  type="primary"
+                  size="small"
+                  inline={true}
+                >
                   选择
                 </Button>
               </div>
