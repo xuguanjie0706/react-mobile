@@ -48,11 +48,11 @@ const Detail = props => {
                       moment(item.exchangeTime).format('YYYY-MM-DD HH:mm:ss') +
                       '\n'}
                   {item.address &&
-                    '收件人:' +
+                    '收件信息:' +
                       item.address.people +
-                      ' 手机号:' +
+                      ' ' +
                       item.address.mobile +
-                      '\n收货地址:' +
+                      '\n' +
                       item.address.area.join('').toString() +
                       item.address.mainArea +
                       '\n'}

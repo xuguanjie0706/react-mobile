@@ -7,6 +7,7 @@ import {
   Result,
   InputItem,
   Button,
+  WingBlank,
 } from 'antd-mobile';
 import './index.less';
 import FixedView from './components/FixedView';
@@ -48,7 +49,7 @@ const detail = props => {
   }, []);
 
   const handleClickImg = async item => {
-    console.log(item);
+    // console.log(item);
     Toast.loading(null, 10);
     try {
       const r = await api.Pic.getpic({ code: item.sendNumber });
@@ -87,7 +88,7 @@ const detail = props => {
   return (
     <div className="room">
       {exchange.status === '1' && (
-        <div className="hl-scroll">
+        <div className="hl-scroll padding-b50">
           {/* <List> */}
           {goodsList.map(i => (
             // <Item >
@@ -95,23 +96,31 @@ const detail = props => {
               onClick={() => handleClick(i)}
               key={i._id}
               className="list-item"
-              style={{ display: 'flex' }}
+              style={{ display: 'flex', flexDirection: 'column' }}
             >
-              <img
-                onClick={handleImgClick}
-                className="pic"
-                src={config.url + i.img}
-              />
-              <div className="title-room">
-                <p className="title">{i.name}</p>
-                <p className="desc">{i.value}</p>
-                <p className="kucun">当前库存: {i.num}</p>
-                {/* <Button type="primary" inline size="small" style={{ marginLeft: '4px', marginTop: 8 }}>选择</Button> */}
+              <div style={{ display: 'flex' }}>
+                <img
+                  onClick={handleImgClick}
+                  className="pic"
+                  src={config.url + i.img}
+                />
+                <div className="title-room">
+                  <p className="title">{i.name}</p>
+                  <p className="desc">{i.value}</p>
+                  <p className="kucun">当前库存: {i.num}</p>
+                  {/* <Button type="primary" inline size="small" style={{ marginLeft: '4px', marginTop: 8 }}>选择</Button> */}
+                </div>
+              </div>
+              <div className="address">以下地区不发货:澳门、台湾、香港</div>
+              <div className="button-room">
+                <Button type="primary" size="small" inline={true}>
+                  选择
+                </Button>
               </div>
             </div>
             // </Item>
           ))}
-          {/* </List> */}
+          <div className="bottom-room">请选择要兑换的商品</div>
         </div>
       )}
 
