@@ -119,7 +119,7 @@ const Exchange = props => {
                           message: '卡号不能为空',
                         },
                       ],
-                      initialValue: 'xx10100505075500',
+                      // initialValue: 'xx10100505075500',
                     })}
                     // label="卡号"
                   >
@@ -133,7 +133,7 @@ const Exchange = props => {
                           message: '密码不能为空',
                         },
                       ],
-                      initialValue: 'wy5yjPmi',
+                      // initialValue: 'wy5yjPmi',
                     })}
                     clear
                     // type="password"
