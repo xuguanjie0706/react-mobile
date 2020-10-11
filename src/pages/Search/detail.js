@@ -38,6 +38,10 @@ const Detail = props => {
               卡号:{item.card}
               <Brief>
                 <div className="my-brief">
+                  {item.exchangeTime &&
+                    '兑换时间:' +
+                      moment(item.exchangeTime).format('YYYY-MM-DD HH:mm:ss') +
+                      '\n'}
                   {item.address &&
                     '收件人:' +
                       item.address.people +
