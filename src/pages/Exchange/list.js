@@ -66,6 +66,11 @@ const detail = props => {
   };
 
   const handleClick = i => {
+    console.log(i);
+    if (i.num === 0) {
+      Toast.fail('库存不足', 1, null, false);
+      return;
+    }
     dispatch({
       type: 'exchange/selectOne',
       payload: i,
@@ -100,6 +105,7 @@ const detail = props => {
               <div className="title-room">
                 <p className="title">{i.name}</p>
                 <p className="desc">{i.value}</p>
+                <p className="kucun">当前库存: {i.num}</p>
                 {/* <Button type="primary" inline size="small" style={{ marginLeft: '4px', marginTop: 8 }}>选择</Button> */}
               </div>
             </div>
