@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'umi';
 import { Result, List } from 'antd-mobile';
+import moment from 'moment';
 import './index.less';
 const Item = List.Item;
 const Brief = Item.Brief;

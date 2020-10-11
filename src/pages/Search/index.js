@@ -111,7 +111,7 @@ const Exchange = props => {
                           message: '电话不能为空',
                         },
                       ],
-                      initialValue: '18079442433',
+                      // initialValue: '18079442433',
                     })}
                   >
                     <span>手机号</span>
