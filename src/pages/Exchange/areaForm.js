@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { List, Radio, Button, WingBlank, Picker, Toast } from 'antd-mobile';
+import {
+  List,
+  Radio,
+  Button,
+  WingBlank,
+  Picker,
+  Toast,
+  TextareaItem,
+} from 'antd-mobile';
 import './index.less';
 import Input from '@/components/Custom/Input';
 import { createForm } from 'rc-form';
@@ -128,7 +136,9 @@ const AreaForm = props => {
         </Picker>
 
         <Item>
-          <Input.TextArea
+          <TextareaItem
+            title="详细地址："
+            autoHeight
             {...getFieldProps('mainArea', {
               rules: [
                 {
@@ -137,8 +147,8 @@ const AreaForm = props => {
                 },
               ],
             })}
-            label="详细地址"
-            className="textarea"
+            // label="详细地址"
+            // className="textarea"
           />
         </Item>
       </List>
