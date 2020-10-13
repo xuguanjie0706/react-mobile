@@ -48,6 +48,10 @@ const detail = props => {
     // }
   }, []);
 
+  // const handleClickImg = () => {
+
+  // }
+
   const handleClickImg = async item => {
     // console.log(item);
     Toast.loading(null, 10);
@@ -79,9 +83,13 @@ const detail = props => {
     history.push('/detail');
   };
 
-  const handleImgClick = e => {
-    // e.stop
+  const handleButtonClick = async (i, e) => {
     e.stopPropagation();
+    await dispatch({
+      type: 'exchange/selectOne',
+      payload: i,
+    });
+    history.push('/area');
     // console.log(123);
   };
 
@@ -100,7 +108,7 @@ const detail = props => {
             >
               <div style={{ display: 'flex' }}>
                 <img
-                  onClick={handleImgClick}
+                  // onClick={handleImgClick}
                   className="pic"
                   src={config.url + i.img}
                 />
@@ -114,6 +122,7 @@ const detail = props => {
               <div className="address">以下地区不发货:澳门、台湾、香港</div>
               <div className="button-room">
                 <Button
+                  onClick={e => handleButtonClick(i, e)}
                   style={{ width: 100 }}
                   type="primary"
                   size="small"
