@@ -71,7 +71,7 @@ const detail = props => {
   };
 
   const handleClick = i => {
-    console.log(i);
+    // console.log(i);
     if (i.num === 0) {
       Toast.fail('库存不足', 1, null, false);
       return;
@@ -85,6 +85,10 @@ const detail = props => {
 
   const handleButtonClick = async (i, e) => {
     e.stopPropagation();
+    if (i.num === 0) {
+      Toast.fail('库存不足', 1, null, false);
+      return;
+    }
     await dispatch({
       type: 'exchange/selectOne',
       payload: i,
