@@ -32,6 +32,10 @@ export default [
         component: '@/pages/Search/detail',
       },
       {
+        path: 'Demo',
+        component: '@/pages/Demo',
+      },
+      {
         path: '/',
         component: '@/layouts/BaseLayout',
         routes: [

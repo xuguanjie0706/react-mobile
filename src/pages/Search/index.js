@@ -8,6 +8,7 @@ import {
   InputItem,
   Radio,
   Toast,
+  NavBar,
 } from 'antd-mobile';
 import Input from '@/components/Custom/Input';
 import { createForm } from 'rc-form';
@@ -68,7 +69,7 @@ const Exchange = props => {
           type: 'exchange/getonebymobile',
           payload: _data,
         });
-        console.log(r);
+        // console.log(r);
         setLoading(false);
         if (r && r.length === 0) {
           Toast.fail('没有快递单信息', 1, null, false);
@@ -89,42 +90,53 @@ const Exchange = props => {
       {isShow && (
         <div
           className="exchange"
-          style={{
-            backgroundImage: `url("${
-              setting.img ? config.url + setting.img : bg
-            }")`,
-          }}
+          // style={{
+          //   backgroundImage: `url("${setting.img ? config.url + setting.img : bg
+          //     }")`,
+          // }}
         >
           {' '}
           {userData.status ? (
-            <WingBlank>
-              <WhiteSpace></WhiteSpace>
-              <div className="form-room">
-                <div className="input-room">
-                  <InputItem
-                    clear
-                    maxLength={11}
-                    {...getFieldProps('mobile', {
-                      rules: [
-                        {
-                          required: true,
-                          message: '电话不能为空',
-                        },
-                      ],
-                      // initialValue: '18079442433',
-                    })}
+            <>
+              <NavBar>{setting.name}</NavBar>
+              <img
+                className="main-pic"
+                src={`${setting.img ? config.url + setting.img : bg}`}
+                alt=""
+              />
+              <WingBlank>
+                <WhiteSpace></WhiteSpace>
+                <div className="form-room">
+                  <div className="input-room">
+                    <InputItem
+                      clear
+                      maxLength={11}
+                      {...getFieldProps('mobile', {
+                        rules: [
+                          {
+                            required: true,
+                            message: '电话不能为空',
+                          },
+                        ],
+                        // initialValue: '18079442433',
+                      })}
+                    >
+                      <span>手机号</span>
+                    </InputItem>
+                  </div>
+                  <WhiteSpace></WhiteSpace>
+                  <WhiteSpace></WhiteSpace>
+                  <WhiteSpace></WhiteSpace>
+                  <Button
+                    loading={loading}
+                    onClick={handleClick}
+                    type="primary"
                   >
-                    <span>手机号</span>
-                  </InputItem>
+                    查询
+                  </Button>
                 </div>
-                <WhiteSpace></WhiteSpace>
-                <WhiteSpace></WhiteSpace>
-                <WhiteSpace></WhiteSpace>
-                <Button loading={loading} onClick={handleClick} type="primary">
-                  查询
-                </Button>
-              </div>
-            </WingBlank>
+              </WingBlank>
+            </>
           ) : (
             <div className="center-view"> 系统异常</div>
           )}

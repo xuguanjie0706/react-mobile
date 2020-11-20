@@ -8,6 +8,7 @@ import {
   InputItem,
   Radio,
   Toast,
+  NavBar,
 } from 'antd-mobile';
 import Input from '@/components/Custom/Input';
 import { createForm } from 'rc-form';
@@ -19,7 +20,7 @@ import bg from '@/assets/bg.png';
 
 const RadioItem = Radio.RadioItem;
 const Exchange = props => {
-  // console.log(props);
+  console.log(props);
   const {
     form,
     history,
@@ -98,58 +99,70 @@ const Exchange = props => {
       {isShow && (
         <div
           className="exchange"
-          style={{
-            backgroundImage: `url("${
-              setting.img ? config.url + setting.img : bg
-            }")`,
-          }}
+          // style={{
+          //   backgroundImage: `url("${
+          //     setting.img ? config.url + setting.img : bg
+          //   }")`,
+          // }}
         >
-          {' '}
           {userData.status ? (
-            <WingBlank>
-              <WhiteSpace></WhiteSpace>
-              <div className="form-room">
-                <div className="input-room">
-                  <InputItem
-                    clear
-                    {...getFieldProps('card', {
-                      rules: [
-                        {
-                          required: true,
-                          message: '卡号不能为空',
-                        },
-                      ],
-                      // initialValue: 'xx10100505075500',
-                    })}
-                    // label="卡号"
+            <>
+              <NavBar>{setting.name}</NavBar>
+              <img
+                className="main-pic"
+                src={`${setting.img ? config.url + setting.img : bg}`}
+                alt=""
+              />
+              <WingBlank>
+                <WhiteSpace></WhiteSpace>
+                <div className="form-room">
+                  <div className="input-room">
+                    <InputItem
+                      clear
+                      {...getFieldProps('card', {
+                        rules: [
+                          {
+                            required: true,
+                            message: '卡号不能为空',
+                          },
+                        ],
+                        // initialValue: 'xx10100505075500',
+                      })}
+                      // label="卡号"
+                    >
+                      <span>卡号</span>
+                    </InputItem>
+                    <InputItem
+                      {...getFieldProps('password', {
+                        rules: [
+                          {
+                            required: true,
+                            message: '密码不能为空',
+                          },
+                        ],
+                        // initialValue: 'wy5yjPmi',
+                      })}
+                      clear
+                      // type="password"
+                      autocomplete="new-password"
+                    >
+                      密码
+                    </InputItem>
+                  </div>
+                  <WhiteSpace></WhiteSpace>
+                  <WhiteSpace></WhiteSpace>
+                  <WhiteSpace></WhiteSpace>
+                  <Button
+                    loading={loading}
+                    onClick={handleClick}
+                    type="primary"
                   >
-                    <span>卡号</span>
-                  </InputItem>
-                  <InputItem
-                    {...getFieldProps('password', {
-                      rules: [
-                        {
-                          required: true,
-                          message: '密码不能为空',
-                        },
-                      ],
-                      // initialValue: 'wy5yjPmi',
-                    })}
-                    clear
-                    // type="password"
-                    autocomplete="new-password"
-                  >
-                    密码
-                  </InputItem>
+                    兑换
+                  </Button>
+                  <div className="main-desc">{setting.desc}</div>
                 </div>
-                <WhiteSpace></WhiteSpace>
-                <WhiteSpace></WhiteSpace>
-                <WhiteSpace></WhiteSpace>
-                <Button loading={loading} onClick={handleClick} type="primary">
-                  兑换
-                </Button>
-              </div>
-            </WingBlank>
+              </WingBlank>
+            </>
           ) : (
             <div className="center-view"> 系统异常</div>
           )}

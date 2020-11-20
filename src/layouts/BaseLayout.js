@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TabBar } from 'antd-mobile';
-
+import { TabBar, NavBar } from 'antd-mobile';
 const BaseLayout = props => {
   console.log(props);
   const {
