@@ -159,7 +159,9 @@ const Exchange = props => {
                   >
                     兑换
                   </Button>
-                  <div className="main-desc">{setting.desc}</div>
+                  <div className="main-desc">
+                    <pre>{setting.desc}</pre>
+                  </div>
                 </div>
               </WingBlank>
             </>
