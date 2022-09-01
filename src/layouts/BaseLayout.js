@@ -5,20 +5,20 @@ const BaseLayout = props => {
   const {
     children,
     history,
-    location: { pathname },
+    // location: { pathname },
   } = props;
   const tabBars = [
     {
-      name: 'exchange',
+      name: 'report',
       title: '首页',
       icon: 'icon-shouye',
-      url: '/Exchange/',
+      url: '/report',
     },
     {
-      name: 'search',
-      title: '查询',
+      name: 'our',
+      title: '我的',
       icon: 'icon-chaxun',
-      url: '/Search/',
+      url: '/our',
     },
   ];
   const [selectedTab, setSelectedTab] = useState('exchange');
@@ -26,16 +26,16 @@ const BaseLayout = props => {
   const handleClick = item => {
     const memberId = localStorage.getItem('memberId');
     setSelectedTab(item.name);
-    history.push(item.url + memberId);
+    history.push(item.url);
   };
 
   useEffect(() => {
-    const tab = tabBars.find(item => {
-      let index = pathname.indexOf(item.url);
-      return index !== -1;
-    });
-    setSelectedTab(tab.name);
-  }, [pathname]);
+    // const tab = tabBars.find(item => {
+    //   let index = pathname.indexOf(item.url);
+    //   return index !== -1;
+    // });
+    // setSelectedTab(tab.name);
+  }, []);
 
   return (
     <div className="room">

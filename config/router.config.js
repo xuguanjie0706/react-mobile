@@ -3,25 +3,9 @@ export default [
     path: '/',
     component: '@/layouts',
     routes: [
-      // {
-      //   path: 'Exchange/:memberId',
-      //   component: '@/pages/Exchange',
-      // },
       {
-        path: 'list',
-        component: '@/pages/Exchange/list',
-      },
-      {
-        path: 'detail',
-        component: '@/pages/Exchange/detail',
-      },
-      {
-        path: 'area',
-        component: '@/pages/Exchange/areaForm',
-      },
-      {
-        path: 'image',
-        component: '@/pages/Exchange/image',
+        path: 'sale',
+        component: '@/pages/sale',
       },
       {
         path: 'home',
@@ -44,13 +28,21 @@ export default [
           //   component: '@/pages/index',
           // },
           {
-            path: 'Exchange/:memberId',
-            component: '@/pages/Exchange',
+            path: 'report',
+            component: '@/pages/report',
           },
           {
-            path: 'Search/:memberId',
-            component: '@/pages/Search',
+            path: 'Our',
+            component: '@/pages/Our',
           },
+          // {
+          //   path: 'Exchange/:memberId',
+          //   component: '@/pages/Exchange',
+          // },
+          // {
+          //   path: 'Search/:memberId',
+          //   component: '@/pages/Search',
+          // },
         ],
       },
     ],
