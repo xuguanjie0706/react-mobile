@@ -1,14 +1,14 @@
 /*
  * @Author: xgj
  * @since: 2022-09-01 21:59:10
- * @lastTime: 2022-09-02 00:50:28
+ * @lastTime: 2022-09-02 01:06:25
  * @LastAuthor: xgj
- * @FilePath: /react-mobile/src/pages/report/index.js
+ * @FilePath: /react-mobile/src/pages/Login/index.js
  * @message:
  */
 import React, { useEffect, useState } from 'react';
 import api from '@/api';
-import './index.less';
+// import './index.less';
 import {
   Button,
   WingBlank,
@@ -23,19 +23,30 @@ import {
 import Input from '@/components/Custom/Input';
 import { createForm } from 'rc-form';
 import { connect } from 'umi';
+import md5 from 'md5';
 const Home = props => {
   console.log(props);
-  const { form } = props;
+  const { form, history } = props;
   const { getFieldProps } = form;
   const [isFinish, setIsFinish] = useState(0);
   const [list, setList] = useState([1, 2, 3]);
   const [loading, setLoading] = useState(false);
   const initData = async () => {
-    const r = api.Goods.allbysimple();
-    setList(r);
+    // const r = api.Goods.allbysimple()
+    // setList(r)
   };
   const handleClick = () => {
-    console.log(123);
+    form.validateFields(async (err, values) => {
+      console.log(values);
+      const _data = { ...values, password: md5(values.password) };
+      const r = await api.User.login(_data);
+      if (r) {
+        console.log(r.token);
+        localStorage.setItem('hl-token', r.token);
+        history.push('/');
+      }
+      console.log(r);
+    });
   };
   useEffect(() => {
     initData();
@@ -49,18 +60,17 @@ const Home = props => {
           <div className="input-room">
             <InputItem
               clear
-              {...getFieldProps('card', {
+              {...getFieldProps('name', {
                 rules: [
                   {
                     required: true,
-                    message: '卡号不能为空',
+                    message: '账号不能为空',
                   },
                 ],
                 // initialValue: 'xx10100505075500',
               })}
-              // label="卡号"
             >
-              <span>名称</span>
+              <span>账号</span>
             </InputItem>
             <InputItem
               {...getFieldProps('password', {
@@ -76,14 +86,14 @@ const Home = props => {
               // type="password"
               autocomplete="new-password"
             >
-              数量
+              密码
             </InputItem>
           </div>
           <WhiteSpace></WhiteSpace>
           <WhiteSpace></WhiteSpace>
           <WhiteSpace></WhiteSpace>
           <Button loading={loading} onClick={handleClick} type="primary">
-            提交
+            登录
           </Button>
         </div>
       </WingBlank>

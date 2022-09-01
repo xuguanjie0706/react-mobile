@@ -1,5 +1,5 @@
 import request from '../../utils/request';
-const gateway = 'goods';
+const gateway = 'order';
 /**
  * @memberof apis
  * @description: 描述方法
@@ -18,23 +18,6 @@ export const getonebysimple = (data = {}) => {
   });
 };
 
-/**
- * @memberof apis
- * @description: 描述方法
- * @function provinces
- * @param {type}  传入参数
- * @author 许(后端对接人名称)
- * @see {@link https://t.com/doc/MrD0qNADV}
- * @return {object} 接口对象
- */
-
-export const allbysimple = (data = {}) => {
-  return request.post({
-    url: 'allbysimple',
-    data,
-    gateway,
-  });
-};
 /**
  * @memberof apis
  * @description: 描述方法
@@ -120,6 +103,24 @@ export const remove = (data = {}) => {
 export const page = (data = {}) => {
   return request.post({
     url: 'page',
+    data,
+    gateway,
+  });
+};
+
+/**
+ * @memberof apis
+ * @description: 定制化分页带详情
+ * @function page
+ * @param {type}  传入参数
+ * @author 许(后端对接人名称)
+ * @see {@link https://t.com/doc/MrD0qNADV}
+ * @return {object} 接口对象
+ */
+
+export const mail = (data = {}) => {
+  return request.post({
+    url: 'mail',
     data,
     gateway,
   });

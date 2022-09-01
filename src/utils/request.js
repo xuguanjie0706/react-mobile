@@ -92,9 +92,9 @@ class $request {
         if (code === 0) {
           return result || true;
         }
-        // if (code === -1) {
-        //   history.push('/login');
-        // }
+        if (code === -1) {
+          history.push('/login');
+        }
         Toast.fail(message, 2, null, false);
         // message.error(msg);
       } else {

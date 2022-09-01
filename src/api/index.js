@@ -1,9 +1,9 @@
 /*
  * @Author: xgj
  * @since: 2020-06-08 13:52:17
- * @lastTime: 2020-09-30 09:23:47
+ * @lastTime: 2022-09-02 00:45:07
  * @LastAuthor: xgj
- * @FilePath: /web/src/api/index.js
+ * @FilePath: /react-mobile/src/api/index.js
  * @message:
  */
 
@@ -23,6 +23,9 @@ import * as ExchangeCard from './modules/ExchangeCard';
 import * as MemberSetting from './modules/MemberSetting';
 import * as Weixin from './modules/Weixin';
 import * as Pic from './modules/Pic';
+import * as Show from './modules/Show';
+import * as Order from './modules/Order';
+import * as Matter from './modules/Matter';
 
 export default {
   File,
@@ -36,4 +39,7 @@ export default {
   MemberSetting,
   Weixin,
   Pic,
+  Show,
+  Order,
+  Matter,
 };

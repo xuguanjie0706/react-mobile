@@ -1,5 +1,13 @@
+/*
+ * @Author: xgj
+ * @since: 2022-09-01 21:38:19
+ * @lastTime: 2022-09-01 21:40:52
+ * @LastAuthor: xgj
+ * @FilePath: /react-mobile/src/api/modules/Show.js
+ * @message:
+ */
 import request from '../../utils/request';
-const gateway = 'goods';
+const gateway = 'show';
 /**
  * @memberof apis
  * @description: 描述方法
@@ -10,31 +18,14 @@ const gateway = 'goods';
  * @return {object} 接口对象
  */
 
-export const getonebysimple = (data = {}) => {
-  return request.post({
-    url: 'getonebysimple',
+export const f = (data = {}) => {
+  return request.get({
+    url: 'f',
     data,
     gateway,
   });
 };
 
-/**
- * @memberof apis
- * @description: 描述方法
- * @function provinces
- * @param {type}  传入参数
- * @author 许(后端对接人名称)
- * @see {@link https://t.com/doc/MrD0qNADV}
- * @return {object} 接口对象
- */
-
-export const allbysimple = (data = {}) => {
-  return request.post({
-    url: 'allbysimple',
-    data,
-    gateway,
-  });
-};
 /**
  * @memberof apis
  * @description: 描述方法
@@ -102,24 +93,6 @@ export const getsomebysimple = (data = {}) => {
 export const remove = (data = {}) => {
   return request.post({
     url: 'remove',
-    data,
-    gateway,
-  });
-};
-
-/**
- * @memberof apis
- * @description: 定制化分页带详情
- * @function page
- * @param {type}  传入参数
- * @author 许(后端对接人名称)
- * @see {@link https://t.com/doc/MrD0qNADV}
- * @return {object} 接口对象
- */
-
-export const page = (data = {}) => {
-  return request.post({
-    url: 'page',
     data,
     gateway,
   });

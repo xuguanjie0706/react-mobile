@@ -1,8 +1,20 @@
+/*
+ * @Author: xgj
+ * @since: 2022-09-01 21:31:56
+ * @lastTime: 2022-09-02 00:53:29
+ * @LastAuthor: xgj
+ * @FilePath: /react-mobile/config/router.config.js
+ * @message:
+ */
 export default [
   {
     path: '/',
     component: '@/layouts',
     routes: [
+      {
+        path: 'login',
+        component: '@/pages/Login',
+      },
       {
         path: 'sale',
         component: '@/pages/sale',

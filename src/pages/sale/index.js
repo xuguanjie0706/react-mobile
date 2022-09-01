@@ -1,7 +1,16 @@
+/*
+ * @Author: xgj
+ * @since: 2022-09-01 21:31:56
+ * @lastTime: 2022-09-01 21:51:56
+ * @LastAuthor: xgj
+ * @FilePath: /react-mobile/src/pages/sale/index.js
+ * @message:
+ */
 import React, { useEffect, useState } from 'react';
 import { Toast, Result } from 'antd-mobile';
 import api from '@/api';
 import './index.less';
+import config from '@/utils/config';
 const Home = props => {
   console.log(props);
   const {
@@ -15,7 +24,11 @@ const Home = props => {
   console.log(query);
   const [isFinish, setIsFinish] = useState(0);
   const [list, setList] = useState([1, 2, 3]);
-  const initData = async () => {};
+  const initData = async () => {
+    const r = await api.Show.f();
+    console.log(r);
+    setList(r);
+  };
   useEffect(() => {
     initData();
   }, []);
@@ -25,12 +38,12 @@ const Home = props => {
         <>
           <div className="cell">
             <div className="left">
-              <img src="https://img2.baidu.com/it/u=2131313921,3723847704&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1662138000&t=6e6f0762ef63655e44bfa9f0770b241b"></img>
+              <img src={config.url + item.img}></img>
             </div>
             <div className="right">
-              <div className="name">伊利舒化奶</div>
+              <div className="name">{item.name}</div>
               <div className="price-room">
-                <div className="activePrice">惊爆价12</div>
+                <div className="activePrice">惊爆价{item.mailPrice}</div>
                 <div className="originalPrice">原价20</div>
                 <div className="num">
                   库存 <span>12</span>
