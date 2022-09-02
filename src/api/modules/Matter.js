@@ -1,5 +1,5 @@
 import request from '../../utils/request';
-const gateway = 'order';
+const gateway = 'matter';
 
 /**
  * @memberof apis

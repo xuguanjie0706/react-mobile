@@ -90,7 +90,7 @@ class $request {
       }
       if (isNotice) {
         if (code === 0) {
-          return result || true;
+          return result ?? true;
         }
         if (code === -1) {
           history.push('/login');

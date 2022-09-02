@@ -1,6 +1,15 @@
+/*
+ * @Author: xgj
+ * @since: 2022-09-01 21:31:56
+ * @lastTime: 2022-09-03 02:23:30
+ * @LastAuthor: xgj
+ * @FilePath: /react-mobile/src/pages/Our/index.js
+ * @message:
+ */
 import React, { useEffect, useState } from 'react';
-import { Toast, Result } from 'antd-mobile';
+import { Toast, Result, List } from 'antd-mobile';
 import api from '@/api';
+
 import './index.less';
 const Home = props => {
   console.log(props);
@@ -10,36 +19,22 @@ const Home = props => {
   } = props;
   let obj = getUrlData(window.location.href);
   console.log(obj);
-  // const dataStr = .split("?")[1]
-  // dataStr[]
   console.log(query);
   const [isFinish, setIsFinish] = useState(0);
-  const [list, setList] = useState([1, 2, 3]);
-  const initData = async () => {};
+  const [user, setUser] = useState({});
+  const initData = async () => {
+    const r = await api.User.check();
+    setUser(r);
+  };
   useEffect(() => {
     initData();
   }, []);
   return (
     <div className="room">
-      {list.map(item => (
-        <>
-          <div className="cell">
-            <div className="left">
-              <img src="https://img2.baidu.com/it/u=2131313921,3723847704&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1662138000&t=6e6f0762ef63655e44bfa9f0770b241b"></img>
-            </div>
-            <div className="right">
-              <div className="name">伊利舒化奶</div>
-              <div className="price-room">
-                <div className="activePrice">惊爆价12</div>
-                <div className="originalPrice">原价20</div>
-                <div className="num">
-                  库存 <span>12</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </>
-      ))}
+      <List>
+        <List.Item extra={user.total}>总收入</List.Item>
+        <List.Item extra={user.balance}>本月收入</List.Item>
+      </List>
     </div>
   );
 };

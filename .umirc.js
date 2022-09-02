@@ -1,3 +1,11 @@
+/*
+ * @Author: xgj
+ * @since: 2022-09-01 21:31:45
+ * @lastTime: 2022-09-03 01:20:41
+ * @LastAuthor: xgj
+ * @FilePath: /react-mobile/.umirc.js
+ * @message:
+ */
 import { defineConfig } from 'umi';
 import postcssImport from 'postcss-import';
 import postcssUrl from 'postcss-url';
@@ -37,11 +45,11 @@ export default defineConfig({
       mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
       exclude: [],
     }),
-    cssnano({
-      preset: 'advanced',
-      autoprefixer: false,
-      'postcss-zindex': false,
-      zindex: false,
-    }),
+    // cssnano({
+    //   preset: 'advanced',
+    //   autoprefixer: false,
+    //   'postcss-zindex': false,
+    //   zindex: false,
+    // }),
   ],
 });

@@ -1,7 +1,7 @@
 /*
  * @Author: xgj
  * @since: 2022-09-01 21:31:56
- * @lastTime: 2022-09-01 21:51:56
+ * @lastTime: 2022-09-03 02:39:15
  * @LastAuthor: xgj
  * @FilePath: /react-mobile/src/pages/sale/index.js
  * @message:
@@ -34,25 +34,27 @@ const Home = props => {
   }, []);
   return (
     <div className="sale-room">
-      {list.map(item => (
-        <>
-          <div className="cell">
-            <div className="left">
-              <img src={config.url + item.img}></img>
-            </div>
-            <div className="right">
-              <div className="name">{item.name}</div>
-              <div className="price-room">
-                <div className="activePrice">惊爆价{item.mailPrice}</div>
-                <div className="originalPrice">原价20</div>
-                <div className="num">
-                  库存 <span>12</span>
+      <div className="cell-room">
+        {list.map(item => (
+          <>
+            <div className="cell">
+              <div className="left">
+                <img src={config.url + item.img}></img>
+              </div>
+              <div className="right">
+                <div className="name">{item.name}</div>
+                <div className="price-room">
+                  <div className="activePrice">惊爆价{item.mailPrice}</div>
+                  <div className="originalPrice">原价{item.originalPrice}</div>
+                  <div className="num">
+                    库存 <span>12</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </>
-      ))}
+          </>
+        ))}
+      </div>
     </div>
   );
 };
