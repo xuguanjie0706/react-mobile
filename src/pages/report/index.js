@@ -1,7 +1,7 @@
 /*
  * @Author: xgj
  * @since: 2022-09-01 21:59:10
- * @lastTime: 2022-09-03 02:30:57
+ * @lastTime: 2022-09-04 12:50:32
  * @LastAuthor: xgj
  * @FilePath: /react-mobile/src/pages/report/index.js
  * @message:
@@ -36,7 +36,7 @@ const Home = props => {
   const [total, setTotal] = useState(0);
   const initData = async () => {
     const r = await api.Goods.allbysimple();
-    setList(r);
+    setList(r || []);
   };
   const handleClick = () => {
     form.validateFields(async (err, values) => {

@@ -1,7 +1,7 @@
 /*
  * @Author: xgj
  * @since: 2022-09-01 21:31:56
- * @lastTime: 2022-09-02 00:53:29
+ * @lastTime: 2022-09-04 12:51:11
  * @LastAuthor: xgj
  * @FilePath: /react-mobile/config/router.config.js
  * @message:
@@ -35,10 +35,10 @@ export default [
         path: '/',
         component: '@/layouts/BaseLayout',
         routes: [
-          // {
-          //   path: '/',
-          //   component: '@/pages/index',
-          // },
+          {
+            path: '/',
+            component: '@/pages/report',
+          },
           {
             path: 'report',
             component: '@/pages/report',
