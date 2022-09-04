@@ -1,7 +1,7 @@
 /*
  * @Author: xgj
  * @since: 2022-09-01 21:31:56
- * @lastTime: 2022-09-03 02:39:15
+ * @lastTime: 2022-09-04 16:30:33
  * @LastAuthor: xgj
  * @FilePath: /react-mobile/src/pages/sale/index.js
  * @message:
@@ -25,7 +25,7 @@ const Home = props => {
   const [isFinish, setIsFinish] = useState(0);
   const [list, setList] = useState([1, 2, 3]);
   const initData = async () => {
-    const r = await api.Show.f();
+    const r = await api.Show.allPrice();
     console.log(r);
     setList(r);
   };
@@ -47,7 +47,7 @@ const Home = props => {
                   <div className="activePrice">惊爆价{item.mailPrice}</div>
                   <div className="originalPrice">原价{item.originalPrice}</div>
                   <div className="num">
-                    库存 <span>12</span>
+                    库存 <span>{item.num}</span>
                   </div>
                 </div>
               </div>

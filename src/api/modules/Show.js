@@ -1,13 +1,31 @@
 /*
  * @Author: xgj
  * @since: 2022-09-01 21:38:19
- * @lastTime: 2022-09-01 21:40:52
+ * @lastTime: 2022-09-04 13:50:15
  * @LastAuthor: xgj
  * @FilePath: /react-mobile/src/api/modules/Show.js
  * @message:
  */
 import request from '../../utils/request';
 const gateway = 'show';
+
+/**
+ * @memberof apis
+ * @description: 描述方法
+ * @function getonebysimple
+ * @param {type}  传入参数
+ * @author 许(后端对接人名称)
+ * @see {@link https://t.com/doc/MrD0qNADV}
+ * @return {object} 接口对象
+ */
+
+export const allPrice = (data = {}) => {
+  return request.get({
+    url: 'allPrice',
+    data,
+    gateway,
+  });
+};
 /**
  * @memberof apis
  * @description: 描述方法
